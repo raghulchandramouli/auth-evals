@@ -2,11 +2,15 @@
 """
 This script is used to run the evaluations for the models.
 """
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import pandas as pd
 from PIL import Image
 from metrics.classification import compute_metrics
-
+from results.save_results import save_results
+from inferencers.dummy_inferencer import DummyInferencer
 def evaluate(inferencer, metadata_csv):
     """
     
@@ -40,3 +44,19 @@ def evaluate(inferencer, metadata_csv):
         
     
     return compute_metrics(y_true, y_pred, y_scores)
+
+def main():
+    
+    model_name = 'dummy_model'
+    dataset_name = 'dummy'
+    
+    metrics = evaluate(inferencer, metadata_csv)
+    
+    print(metrics)
+    
+    save_results(
+        model_name = model_name,
+        dataset_name = dataset_name,
+        metrics = metrics,
+        transform = 'clean'
+    )
