@@ -4,7 +4,7 @@ This document is used for agents to understand what's happening codebase
 
 ---
 
-# 🎯 Purpose
+# Purpose
 
 AUTH-EVAL is a standardized evaluation framework for AI-Generated Image (AIGI) detection models.
 
@@ -19,7 +19,7 @@ The system is designed to:
 ---
 
 
-# 🏗️ System Agents
+#  System Agents
 
 Below is the mapping between directories and system agents.
 
@@ -37,7 +37,7 @@ Below is the mapping between directories and system agents.
 
 ---
 
-# 🔹 1️⃣ Model Agent (architecture/)
+#  Model Agent (architecture/)
 
 Defines ONLY neural architectures.
 
@@ -58,7 +58,7 @@ class Model(nn.Module):
 
 ---
 
-# 🔹 2️⃣ Inferencer Agent (inferencers/)
+#  Inferencer Agent (inferencers/)
 
 Wraps model architecture + checkpoint loading.
 
@@ -90,7 +90,7 @@ class BaseInferencer:
 
 ---
 
-# 🔹 3️⃣ Dataset Agent (databunch/ + scripts/)
+#  Dataset Agent (databunch/ + scripts/)
 
 Raw datasets are stored in `databunch/`.
 
@@ -120,7 +120,7 @@ scripts/build_metadata.py
 
 ---
 
-# 🔹 4️⃣ Metrics Agent (metrics/)
+#  Metrics Agent (metrics/)
 
 Computes evaluation metrics.
 
@@ -156,7 +156,7 @@ def compute_metrics(y_true, y_pred, y_scores):
 
 ---
 
-# 🔹 5️⃣ Robustness Agent (transforms/)
+# Robustness Agent (transforms/)
 
 Applies evaluation-time corruptions.
 
@@ -180,7 +180,7 @@ blur_1.0
 
 ---
 
-# 🔹 6️⃣ Logging Agent (results/)
+# Logging Agent (results/)
 
 Stores benchmark outputs.
 
@@ -200,7 +200,7 @@ model_name,dataset,accuracy,f1,auc,transform
 
 ---
 
-# 🔹 7️⃣ Config Agent (configs/)
+#  Config Agent (configs/)
 
 All runs must be config-driven.
 
@@ -218,7 +218,7 @@ No hardcoded paths inside evaluation scripts.
 
 ---
 
-# 🔁 Evaluation Flow
+# Evaluation Flow
 
 1. Load config
 2. Load metadata CSV
@@ -230,7 +230,7 @@ No hardcoded paths inside evaluation scripts.
 
 ---
 
-# 📊 Future Extensions
+#  Future Extensions
 
 Planned additions:
 
@@ -243,7 +243,7 @@ Planned additions:
 
 ---
 
-# 🔐 Contribution Rules
+#  Contribution Rules
 
 When adding a new model:
 
@@ -260,7 +260,7 @@ When adding a new dataset:
 
 ---
 
-# 🧭 Final Philosophy
+#  Final Philosophy
 
 AIGI-EVAL is designed to be:
 
