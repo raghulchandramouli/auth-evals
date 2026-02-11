@@ -11,6 +11,7 @@ from PIL import Image
 from metrics.classification import compute_metrics
 from results.save_results import save_results
 from inferencers.dummy_inferencer import DummyInferencer
+
 def evaluate(inferencer, metadata_csv):
     """
     
@@ -25,14 +26,10 @@ def evaluate(inferencer, metadata_csv):
     
     df = pd.read_csv(metadata_csv)
     
-    y_true = []
-    y_pred = []
-    y_scores = []
-    
+    y_true, y_pred, y_scores = [], [], []
     
     for _, row in df.iterrows():
         image = Image.open(row['image_path'])
-        
         output = inferencer.predict(image)
         
         fake_prob = output['fake_prob']
@@ -42,13 +39,15 @@ def evaluate(inferencer, metadata_csv):
         y_pred.append(pred_label)
         y_scores.append(fake_prob)
         
-    
     return compute_metrics(y_true, y_pred, y_scores)
 
 def main():
     
-    model_name = 'dummy_model'
-    dataset_name = 'dummy'
+    model_name   = 'dummy_model'
+    dataset_name = 'dummy' 
+    
+    inferencer = DummyInferencer()
+    metadata_csv = 'databunch/dummy/metadata.csv'
     
     metrics = evaluate(inferencer, metadata_csv)
     
@@ -60,3 +59,6 @@ def main():
         metrics = metrics,
         transform = 'clean'
     )
+    
+if __name__ == '__main__':
+    main()
