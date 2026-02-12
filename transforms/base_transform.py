@@ -11,3 +11,11 @@ Why?
 
 Just pure structure
 """
+from abc import ABC, abstractmethod
+from PIL import image
+class BaseTransform(ABC):
+
+    # Every transform must implement this method
+    @abstractmethod
+    def apply(self, image: image.image) -> image.image:
+        pass
