@@ -44,11 +44,11 @@ def evaluate(inferencer, metadata_csv):
 def main():
     
     model_name   = 'dummy_model'
-    dataset_name = 'dummy' 
+    dataset_name = 'cifake' 
     
     inferencer = DummyInferencer()
-    metadata_csv = 'databunch/dummy/metadata.csv'
-    
+    metadata_csv = 'databunch/cifake/metadata.csv'
+
     metrics = evaluate(inferencer, metadata_csv)
     
     print(metrics)
